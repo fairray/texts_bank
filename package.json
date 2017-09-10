@@ -18,6 +18,7 @@
     "pg": "^7.3.0",
     "sequelize": "^4.8.2",
     "sequelize-cli": "^2.8.0",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "validator": "^8.2.0"
   }
 }
