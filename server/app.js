@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const auth = require('./utils/auth');
 //routes
 const index = require('./routes/index');
-const user = require('./routes/user');
+const users = require('./routes/users');
 const app = express();
 
 
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(auth.initialize());
-app.use('/api/user', user);
+app.use('/api/users', users);
 app.use('/', index);
 
 // catch 404 and forward to error handler
