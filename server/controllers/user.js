@@ -10,7 +10,7 @@ function validateUser(user){
         return false;
     } 
 }
-function signup(req, res, next){
+function signUp(req, res, next){
     if (!validateUser(req.body)){
         res.status(422);
         res.json({success: false, message: 'email , password is required'});
@@ -35,7 +35,7 @@ function signup(req, res, next){
     }
     createUser({email, password});
 }
-function signin(req, res, next){
+function signIn(req, res, next){
     if (!validateUser(req.body)){
         res.status(401);
         res.json({success: false, message: 'email & password is required'});
@@ -48,7 +48,7 @@ function signin(req, res, next){
         }else{
             if ( user.comparePassword(password) ){
                 const token = jwt.encode({ id: user.id }, config.secretKey);
-                res.json({success:true, token: token});
+                res.json({success:true, token: "Bearer " + token});
             }else{
                 res.status('401');
                 res.json({success: false, message: 'Password did not match'});
@@ -58,7 +58,15 @@ function signin(req, res, next){
         next(err);
     })
 }
+function getInfo(req, res, next){
+    if (req.user){
+        res.json(req.user);
+    }else{
+        next()
+    }
+}
 module.exports = {
-    signup,
-    signin
+    signUp,
+    signIn,
+    getInfo
 }
