@@ -16,7 +16,6 @@ function signUp(req, res, next){
         res.json({success: false, message: 'email , password is required'});
     }; 
     const {email, password} = req.body;
-    const getUserByEmail = db.User.findOne({where: {email}});
     const createUser = function({email, password}){
         db.User.create({email, password}).then((newUser)=>{
             res.json({
