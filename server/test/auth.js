@@ -1,6 +1,6 @@
 process.env.NODE_ENV = "test";
-const app = require('./../server/app.js');
-const db = require('./../server/models');
+const app = require('./../app.js');
+const db = require('./../models');
 const supertest = require('supertest');
 const expect = require('chai').expect;
 const should = require('chai').should();
